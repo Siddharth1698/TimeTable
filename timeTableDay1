@@ -17,17 +17,51 @@ section_dict = {}
 
 
 def initialize(sections, days, time_slots):
-  pass
+    for section in sections:
+        section_dict[section] = {}
+        for day in days:
+            section_dict[section][day]={}
+            for slots in time_slots:
+                section_dict[section][day][slots]=[]
 
 
 def build_dataStructure(sections, days, time_slots, subjects):
-  pass
+    subject_counter = 0
+    subject_no = 0
+    for section in sections:
+        for day in days:
+            for slots in time_slots:
+                while subject_counter < 4 :
+                    if subject_no < 5 :
+                        subject_no = subject_no + 1
+                    else:
+                        subject_no = 1
+                    section_dict[section][day][slots].append((subjects[subject_no-1]))
+                    subject_counter  = subject_counter + 1
+                subject_counter = 0
                 
 def display_table_allsection(section_table):
     return section_dict
 
 def display_table_section(input_number):
-  pass
+    if input_number == 1:
+        return section_dict["sec1"]
+    elif input_number == 2:
+        return section_dict["sec2"]
+    elif input_number == 3:
+        return section_dict["sec3"]
+    elif input_number == 4:
+        return section_dict["sec4"]
+    elif input_number == 5:
+        return section_dict["sec5"]
+    else :
+        return 0
+
+initialize(sections, days, time_slots)
+build_dataStructure(sections, days, time_slots, subjects, 0)
+# input_number = int(input("Enter a number between 1 to 5"))
+# print(section_dict)
+
 
 
 def valid_teachers(section, hours, subjects):
