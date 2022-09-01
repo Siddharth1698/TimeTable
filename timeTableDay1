@@ -1,0 +1,53 @@
+'''
+Program to generate time table to minimize teacher count
+'''
+time_slots = ["8-9", "9-10", "11-12", "12-01"]
+# time slots per day
+subjects = ["s1", "s2", "s3", "s4", "s5"]
+# 5 subjects
+days = ['mon', 'tue', 'wed', 'thur', 'fri']
+# days of a week
+sections = ['sec1', 'sec2', 'sec3', 'sec4', 'sec5']
+# sections for each day
+teachers = []
+
+section_dict = {}
+
+# a counter used for keeping track of subjects assigned to the nested dictionory.
+
+
+def initialize(sections, days, time_slots):
+  pass
+
+
+def build_dataStructure(sections, days, time_slots, subjects):
+  pass
+                
+def display_table_allsection(section_table):
+    return section_dict
+
+def display_table_section(input_number):
+  pass
+
+
+def valid_teachers(section, hours, subjects):
+    pass   # based upon the constraints mentioned
+
+def teacher_available(time_slots, subject):
+    pass # to check if the teacher is available to take that
+
+def teacher_count(maximum_hour, no_hours_day, no_subjects,
+                    subject_per_section):
+    pass  # to calculate the optimal number of teachers
+
+def table_section(section_number, time_slots, days, subject):
+    pass  # time table for each section
+
+ 
+def table_teacher(teacher_name, subject):
+    pass  # generate time table for each teacher
+
+def display_table_teacher(teacher_name, subject):
+    pass  # display time table for each teache
+
+
