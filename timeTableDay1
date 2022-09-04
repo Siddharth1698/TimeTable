@@ -20,9 +20,8 @@ def initialize(sections, days, time_slots):
     for section in sections:
         section_dict[section] = {}
         for day in days:
-            section_dict[section][day]={}
-            for slots in time_slots:
-                section_dict[section][day][slots]=[]
+            section_dict[section][day]=[]
+         
 
 
 def build_dataStructure(sections, days, time_slots, subjects):
@@ -30,16 +29,44 @@ def build_dataStructure(sections, days, time_slots, subjects):
     subject_no = 0
     for section in sections:
         for day in days:
-            for slots in time_slots:
                 while subject_counter < 4 :
                     if subject_no < 5 :
                         subject_no = subject_no + 1
                     else:
                         subject_no = 1
-                    section_dict[section][day][slots].append((subjects[subject_no-1]))
+                    section_dict[section][day].append((subjects[subject_no-1]))
                     subject_counter  = subject_counter + 1
                 subject_counter = 0
-                
+        
+        
+t_dict = {}          
+     
+def build_dataStructure_Teacher(sections, days, time_slots, subjects):
+    teacher_count = 0
+    teacher_no  = 0
+    d = []
+    all_list = []           
+    teacher_list = []
+    for section in sections:
+        all_list.extend(section_dict[section]['mon'])
+    for i in range(len(all_list)):
+        teacher_count = teacher_count + 1
+        if teacher_count == 3: teacher_no = teacher_no + 1; teacher_count = 0
+        teacher_list.append(teacher_no+1)
+    p = list(zip(all_list,teacher_list))
+
+    print(p)
+        
+    
+
+initialize(sections, days, time_slots)
+build_dataStructure(sections, days, time_slots, subjects)
+teacher_dict = section_dict.copy() 
+build_dataStructure_Teacher(sections, days, time_slots, subjects)
+# input_number = int(input("Enter a number between 1 to 5"))
+#print(teacher_dict)
+
+
 def display_table_allsection(section_table):
     return section_dict
 
@@ -57,13 +84,6 @@ def display_table_section(input_number):
     else :
         return 0
 
-initialize(sections, days, time_slots)
-build_dataStructure(sections, days, time_slots, subjects, 0)
-# input_number = int(input("Enter a number between 1 to 5"))
-# print(section_dict)
-
-
-
 def valid_teachers(section, hours, subjects):
     pass   # based upon the constraints mentioned
 
@@ -77,11 +97,8 @@ def teacher_count(maximum_hour, no_hours_day, no_subjects,
 def table_section(section_number, time_slots, days, subject):
     pass  # time table for each section
 
- 
 def table_teacher(teacher_name, subject):
     pass  # generate time table for each teacher
 
 def display_table_teacher(teacher_name, subject):
     pass  # display time table for each teache
-
-
